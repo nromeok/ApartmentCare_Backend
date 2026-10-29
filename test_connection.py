@@ -10,7 +10,7 @@ if not database_url:
     raise ValueError("DATABASE_URL is not set in the environment variables.")
 
 try:
-    with psycopg.connect(database_url, connect_timeout=10) as conn:
+    with psycopg.connect(database_url) as conn:
         with conn.cursor() as cursor:
             cursor.execute("SELECT current_database(), current_user;")
             print("Connection successful. Current database and user:", cursor.fetchone())
